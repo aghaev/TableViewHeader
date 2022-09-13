@@ -46,8 +46,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "envelope.fill", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -58,8 +58,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "phone.fill", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -70,8 +70,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "video.fill", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -82,8 +82,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "speaker.slash.fill", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -94,8 +94,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "trash.fill", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -106,8 +106,8 @@ final class StretchyTableViewHeaderView: UIView {
         let image = UIImage(systemName: "magnifyingglass", withConfiguration: config)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
+        
+        
         button.tintColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return button
     }()
@@ -120,10 +120,14 @@ final class StretchyTableViewHeaderView: UIView {
     
     let blockLabel: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
         label.text = "Bloklamag"
         label.font = .systemFont(ofSize: 24)
+        label.textColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
         return label
     }()
+    
+        
     
     private var imageViewHeidht = NSLayoutConstraint()
     private var imageViewBottom = NSLayoutConstraint()
@@ -185,18 +189,17 @@ final class StretchyTableViewHeaderView: UIView {
         
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 16).isActive = true
-        buttonsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 64).isActive = true
-        buttonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -64).isActive = true
+        buttonsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        buttonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
         separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.topAnchor.constraint(equalTo: messageButton.bottomAnchor, constant: 16).isActive = true
+        separator.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: 16).isActive = true
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         separator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         separator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         
-//        blockLabel.topAnchor.constraint(equalTo: separator.bottomAnchor).isActive = true
+        blockLabel.topAnchor.constraint(equalTo: separator.topAnchor).isActive = true
 //        blockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        
         
         NSLayoutConstraint.activate([
             messageButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor),
