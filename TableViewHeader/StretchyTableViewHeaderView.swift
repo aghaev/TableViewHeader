@@ -198,17 +198,8 @@ final class StretchyTableViewHeaderView: UIView {
         separator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         separator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         
-        blockLabel.topAnchor.constraint(equalTo: separator.topAnchor).isActive = true
+//        blockLabel.topAnchor.constraint(equalTo: separator.topAnchor).isActive = true
 //        blockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        
-        NSLayoutConstraint.activate([
-            messageButton.leadingAnchor.constraint(equalTo: buttonsStackView.leadingAnchor),
-            voiceCallButton.leadingAnchor.constraint(equalTo: messageButton.trailingAnchor),
-            videoCallButton.leadingAnchor.constraint(equalTo: voiceCallButton.trailingAnchor),
-            muteButton.leadingAnchor.constraint(equalTo: videoCallButton.trailingAnchor),
-            deleteButton.leadingAnchor.constraint(equalTo: muteButton.trailingAnchor),
-            searchButton.leadingAnchor.constraint(equalTo: deleteButton.trailingAnchor)
-        ])
     }
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
