@@ -36,9 +36,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: view.frame.size.width,
                                                                height: 550))
-//        header.profileImageView.image = UIImage(named: "aydin")
-//        header.nameLabel.text = "Aydin Aghayev"
-//        let qwe = StretchyTableViewHeaderView(image: UIImage(named: "aydin")!, name: "ass", isOnline: true, lastSeen: "sdsd")
+
+        header.image = UIImage(named: "aydin")!
+        header.name = "Aydin Aghayev"
+        header.isOnline = true
+        header.lastSeen = "Onlayn"
+        header.nickName = "@aghay3v"
+        header.phoneNumber = "+994 55 681 34 41"
+        
         myTableView.tableHeaderView = header
     }
     

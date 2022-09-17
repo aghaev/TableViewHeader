@@ -9,24 +9,20 @@ import UIKit
 
 final class StretchyTableViewHeaderView: UIView {
     
-    private let profileStackView = UIView().createProfileView(with: UIImage(named: "aydin")!,
-                                                              name: "Aydin Aghayev",
-                                                              isOnline: true,
-                                                              lastSeen: "Onlayn")
+    public var image: UIImage = UIImage()
+    public var name: String = ""
+    public var isOnline: Bool = true
+    public var lastSeen: String = ""
+    public var nickName: String = ""
+    public var phoneNumber: String = ""
     
-    private let topSeparator: UIView = {
+    private lazy var topSeparator: UIView = {
         let separator = UIView()
         separator.backgroundColor = .lightGray
         return separator
     }()
     
-    private let bottomSeparator: UIView = {
-        let separator = UIView()
-        separator.backgroundColor = .lightGray
-        return separator
-    }()
-    
-    private let infoLabel: UILabel = {
+    private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.text = "Info"
         label.font = .systemFont(ofSize: 16, weight: .medium)
@@ -34,30 +30,32 @@ final class StretchyTableViewHeaderView: UIView {
         return label
     }()
     
+    private lazy var profileStackView = UIView().createProfileView(with: image,
+                                                           name: name,
+                                                           isOnline: isOnline,
+                                                           lastSeen: lastSeen)
     
-    
-    private let nickNameStack = UIView().createStack(with: "Istifadechi adi",
-                                                     secondLabel: "@aghayev",
-                                                     switchView: nil,
-                                                     isOn: nil)
-    
-    private let phoneStack = UIView().createStack(with: "Mobil nomre",
-                                                  secondLabel: "+994 55 681 34 41",
+    private lazy var nickNameStack = UIView().createStack(with: "Istifadechi adi",
+                                                  secondLabel: nickName,
                                                   switchView: nil,
                                                   isOn: nil)
     
-    private let notificationStackView = UIView().createStack(with: "Bildirish",
-                                                            secondLabel: "Aktiv",
-                                                            switchView: UISwitch(),
-                                                            isOn: false)
+    private lazy var phoneStack = UIView().createStack(with: "Mobil nomre",
+                                               secondLabel: phoneNumber,
+                                               switchView: nil,
+                                               isOn: nil)
     
-    private let silenceStackView = UIView().createStack(with: "Mute",
-                                                        secondLabel: "Deaktiv",
-                                                        switchView: UISwitch(),
-                                                        isOn: true)
+    private lazy var notificationStackView = UIView().createStack(with: "Bildirish",
+                                                          secondLabel: "Aktiv",
+                                                          switchView: UISwitch(),
+                                                          isOn: false)
     
+    private lazy var silenceStackView = UIView().createStack(with: "Mute",
+                                                     secondLabel: "Deaktiv",
+                                                     switchView: UISwitch(),
+                                                     isOn: true)
     
-    private let wallpaperLabel: UILabel = {
+    private lazy var wallpaperLabel: UILabel = {
         let label = UILabel()
         label.text = "Divar kagizi sec"
         label.font = .systemFont(ofSize: 14, weight: .medium)
@@ -65,14 +63,20 @@ final class StretchyTableViewHeaderView: UIView {
         return label
     }()
     
-    private let melodyStack = UIView().createStack(with: "Ses tonunu sec",
-                                                   secondLabel: "Imagine Dragons - Bones",
-                                                   switchView: nil, isOn: nil)
+    private lazy var melodyStack = UIView().createStack(with: "Ses tonunu sec",
+                                                secondLabel: "Imagine Dragons - Bones",
+                                                switchView: nil, isOn: nil)
     
-    private let blockStack = UIView().createStack(with: "Bloklamaq",
-                                                  secondLabel: "Blok et",
-                                                  switchView: UISwitch(),
-                                                  isOn: true)
+    private lazy var blockStack = UIView().createStack(with: "Bloklamaq",
+                                               secondLabel: "Blok et",
+                                               switchView: UISwitch(),
+                                               isOn: true)
+    
+    private lazy var bottomSeparator: UIView = {
+        let separator = UIView()
+        separator.backgroundColor = .lightGray
+        return separator
+    }()
     
     public let segmentedControl = CSegControl()
     
@@ -81,7 +85,7 @@ final class StretchyTableViewHeaderView: UIView {
     private var containerView = UIView()
     private var containerViewHeight = NSLayoutConstraint()
     private let minHeaderHeight: CGFloat = 44
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         newUI()
