@@ -9,8 +9,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-    
     private let myTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -25,17 +23,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Mesajlar"
+
         view.addSubview(myTableView)
         
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.frame = view.bounds
+        myTableView.backgroundColor = .main
+        navigationController?.navigationBar.backgroundColor = .main
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
         let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: view.frame.size.width,
-                                                               height: 460))
-        header.profileImageView.image = UIImage(named: "aydin")
-        header.nameLabel.text = "Aydin Aghayev"
-        header.numberLabel.text = "+994556813441"
+                                                               height: 550))
+//        header.profileImageView.image = UIImage(named: "aydin")
+//        header.nameLabel.text = "Aydin Aghayev"
+        let qwe = StretchyTableViewHeaderView(image: UIImage(named: "aydin")!, name: "ass", isOnline: true, lastSeen: "sdsd")
         myTableView.tableHeaderView = header
     }
     
@@ -46,6 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = model[indexPath.row]
+        cell.backgroundColor = .main
         return cell
     }
     
@@ -53,14 +57,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let header = myTableView.tableHeaderView as? StretchyTableViewHeaderView else { return }
         header.scrollViewDidScroll(scrollView: myTableView)
         let scrollDiff = scrollView.contentOffset.y - self.previousScrollOffset
-        let isScrollingDown = scrollDiff > 0
-        let isScrollingUp = scrollDiff < 0
+        _ = scrollDiff > 0
+        _ = scrollDiff < 0
         
         self.previousScrollOffset = scrollView.contentOffset.y
         

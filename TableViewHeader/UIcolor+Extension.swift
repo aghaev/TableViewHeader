@@ -30,6 +30,9 @@ extension UIColor {
     static var secondaryRed: UIColor {
         return #colorLiteral(red: 0.8899999857, green: 0.2980000079, blue: 0.2980000079, alpha: 1)
     }
+    static var onlineGreen: UIColor {
+        return UIColor(hexString: "59A76A")
+    }
     
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -57,7 +60,140 @@ extension UIView {
         mask.path = path.cgPath
         self.layer.mask = mask
     }
+    
+    func createStack(with firstLabel: String, secondLabel: String, switchView: UISwitch?, isOn: Bool?) -> UIStackView {
+        
+        let firstLabel: UILabel = {
+            let label = UILabel()
+            label.text = firstLabel
+            label.font = .systemFont(ofSize: 14, weight: .medium)
+            label.textColor = .primary
+            return label
+        }()
+        
+        let secondLabel: UILabel = {
+            let label = UILabel()
+            label.text = secondLabel
+            label.font = .systemFont(ofSize: 16, weight: .regular)
+            label.textColor = UIColor(hexString: "727C7A")
+            return label
+        }()
+        
+        let verticalStackView: UIStackView = {
+            let sv = UIStackView()
+            sv.distribution = .fillProportionally
+            sv.axis = .vertical
+            sv.alignment = .leading
+            return sv
+        }()
+        
+        verticalStackView.addArrangedSubview(firstLabel)
+        verticalStackView.addArrangedSubview(secondLabel)
+        
+        if switchView == nil {
+            return verticalStackView
+        } else {
+            switchView?.isOn = isOn!
+            let horizontalStackView: UIStackView = {
+                let sv = UIStackView()
+                sv.distribution = .fill
+                sv.axis = .horizontal
+                sv.alignment = .center
+                return sv
+            }()
+            horizontalStackView.addArrangedSubview(verticalStackView)
+            horizontalStackView.addArrangedSubview(switchView!)
+            
+            return horizontalStackView
+        }
+    }
+    
+    func createProfileView(with image: UIImage, name: String, isOnline: Bool, lastSeen: String) -> UIStackView {
+        
+        let onlineView: UIView = {
+            let onlineView = UIView()
+            onlineView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            onlineView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            onlineView.backgroundColor = .clear
+            return onlineView
+        }()
+        
+        let profileImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = image
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFit
+            imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+            imageView.layer.cornerRadius = 25
+            return imageView
+        }()
+        
+        let onlineImageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFit
+            imageView.heightAnchor.constraint(equalToConstant: 14).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 14).isActive = true
+            imageView.layer.cornerRadius = 7
+            imageView.backgroundColor = isOnline ? .onlineGreen : .clear
+            return imageView
+        }()
+        
+        let profileStackView: UIStackView = {
+            let sv = UIStackView()
+            sv.distribution = .fill
+            sv.axis = .horizontal
+            sv.alignment = .center
+            sv.spacing = 24
+            return sv
+        }()
+        
+        let profileVerticalStackView: UIStackView = {
+            let sv = UIStackView()
+            sv.distribution = .fillProportionally
+            sv.axis = .vertical
+            sv.alignment = .leading
+            return sv
+        }()
+        
+        let nameLabel: UILabel = {
+            let label = UILabel()
+            label.text = name
+            label.textAlignment = .center
+            label.font = .systemFont(ofSize: 18, weight: .bold)
+            label.textColor = .primary
+            return label
+        }()
+        
+        let lastSeenLabel: UILabel = {
+            let label = UILabel()
+            label.text = lastSeen // temprorary
+            label.font = .systemFont(ofSize: 12, weight: .thin)
+            return label
+        }()
+        
+        onlineView.addSubview(profileImageView)
+        onlineView.addSubview(onlineImageView)
+        profileStackView.addArrangedSubview(onlineView)
+        profileVerticalStackView.addArrangedSubview(nameLabel)
+        profileVerticalStackView.addArrangedSubview(lastSeenLabel)
+        profileStackView.addArrangedSubview(profileVerticalStackView
+        )
+        onlineView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        onlineImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        profileImageView.centerXAnchor.constraint(equalTo: onlineView.centerXAnchor).isActive = true
+        profileImageView.centerYAnchor.constraint(equalTo: onlineView.centerYAnchor).isActive = true
+        onlineImageView.trailingAnchor.constraint(equalTo: onlineView.trailingAnchor).isActive = true
+        onlineImageView.bottomAnchor.constraint(equalTo: onlineView.bottomAnchor).isActive = true
+        
+        return profileStackView
+    }
 }
+
+
 
 extension UIImage {
     enum ContentMode {

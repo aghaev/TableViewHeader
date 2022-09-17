@@ -9,200 +9,82 @@ import UIKit
 
 final class StretchyTableViewHeaderView: UIView {
     
-    public let profileStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.distribution = .fill
-        sv.axis = .horizontal
-        sv.alignment = .center
-        sv.spacing = 24
-        return sv
-    }()
+    public var image: UIImage = UIImage()
+    public var name: String = ""
+    public var isOnline: Bool = true
+    public var lastSeen: String = ""
     
-    public let profileVerticalStackView: UIStackView = {
-        let sv = UIStackView()
-        sv.distribution = .fillProportionally
-        sv.axis = .vertical
-        sv.alignment = .leading
-        return sv
-    }()
+    init(image: UIImage, name: String, isOnline: Bool, lastSeen: String) {
+        self.image = image
+        self.name = name
+        self.isOnline = isOnline
+        self.lastSeen = lastSeen
+    }
     
-    let lastSeenLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Onlayn" // temprorary
-        label.font = .systemFont(ofSize: 12, weight: .thin)
-        return label
-    }()
+    private let profileStackView = UIView().createProfileView(with: self.image,
+                                                              name: name,
+                                                              isOnline: isOnline,
+                                                              lastSeen: lastSeen)
     
-    public let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        imageView.layer.cornerRadius = 25
-        imageView.layer.borderColor = .primaryCg
-        imageView.layer.borderWidth = 1
-        return imageView
-    }()
-    
-    public let onlineView: UIView = {
-        let onlineView = UIView()
-        onlineView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        onlineView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-        onlineView.backgroundColor = .clear
-        return onlineView
-    }()
-    
-    public let onlineImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
-        imageView.heightAnchor.constraint(equalToConstant: 14).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 14).isActive = true
-        imageView.layer.cornerRadius = 7
-        imageView.backgroundColor = .green
-        return imageView
-    }()
-    
-    
-    public let nameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .primary
-        return label
-    }()
-    
-    public let numberLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = .primary
-        return label
-    }()
-    
-    public let buttonsStackView: UIStackView = {
-       let sv = UIStackView()
-        sv.distribution = .fillProportionally
-        sv.axis = .horizontal
-        sv.alignment = .center
-        return sv
-    }()
-    
-    public let messageButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "envelope.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let emptyButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 64)
-        let image = UIImage(systemName: "envelo", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let emptyButton1: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 64)
-        let image = UIImage(systemName: "envelo", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let voiceCallButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "phone.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let videoCallButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "video.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let muteButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "speaker.slash.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let deleteButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "trash.fill", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let searchButton: UIButton = {
-        let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 24)
-        let image = UIImage(systemName: "magnifyingglass", withConfiguration: config)
-        button.setImage(image, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .primary
-        return button
-    }()
-    
-    public let separator: UIView = {
+    private let topSeparator: UIView = {
         let separator = UIView()
-        separator.backgroundColor = .primary
+        separator.backgroundColor = .lightGray
         return separator
     }()
     
-    public let blockLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.text = "Bloklamag"
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = .primary
-        return label
-    }()
-    
-    public let detailedBlockLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.text = "Blokl et"
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .primary
-        return label
-    }()
-    
-    public let blockSwitch : UISwitch = {
-        let blockSwitch = UISwitch()
-        return blockSwitch
-    }()
-    
-    public let separator1: UIView = {
+    private let bottomSeparator: UIView = {
         let separator = UIView()
-        separator.backgroundColor = .primary
+        separator.backgroundColor = .lightGray
         return separator
     }()
+    
+    private let infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Info"
+        label.font = .systemFont(ofSize: 16, weight: .medium)
+        label.textColor = UIColor(hexString: "344F52")
+        return label
+    }()
+    
+    
+    
+    private let nickNameStack = UIView().createStack(with: "Istifadechi adi",
+                                                     secondLabel: "@aghayev",
+                                                     switchView: nil,
+                                                     isOn: nil)
+    
+    private let phoneStack = UIView().createStack(with: "Mobil nomre",
+                                                  secondLabel: "+994 55 681 34 41",
+                                                  switchView: nil,
+                                                  isOn: nil)
+    
+    private let notificationStackView = UIView().createStack(with: "Bildirish",
+                                                            secondLabel: "Aktiv",
+                                                            switchView: UISwitch(),
+                                                            isOn: false)
+    
+    private let silenceStackView = UIView().createStack(with: "Mute",
+                                                        secondLabel: "Deaktiv",
+                                                        switchView: UISwitch(),
+                                                        isOn: true)
+    
+    
+    private let wallpaperLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Divar kagizi sec"
+        label.font = .systemFont(ofSize: 14, weight: .medium)
+        label.textColor = .primary
+        return label
+    }()
+    
+    private let melodyStack = UIView().createStack(with: "Ses tonunu sec",
+                                                   secondLabel: "Imagine Dragons - Bones",
+                                                   switchView: nil, isOn: nil)
+    
+    private let blockStack = UIView().createStack(with: "Bloklamaq",
+                                                  secondLabel: "Blok et",
+                                                  switchView: UISwitch(),
+                                                  isOn: true)
     
     public let segmentedControl = CSegControl()
     
@@ -214,7 +96,6 @@ final class StretchyTableViewHeaderView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         newUI()
         createNewConstraints()
     }
@@ -226,76 +107,26 @@ final class StretchyTableViewHeaderView: UIView {
     // min -47
     // height = 464
     
-    public func newUI() {
+    private func newUI() {
         addSubview(containerView)
-        onlineView.addSubview(profileImageView)
-        onlineView.addSubview(onlineImageView)
-        profileStackView.addArrangedSubview(onlineView)
-
-        
-        profileVerticalStackView.addArrangedSubview(nameLabel)
-        profileVerticalStackView.addArrangedSubview(lastSeenLabel)
-        profileStackView.addArrangedSubview(profileVerticalStackView)
+        containerView.backgroundColor = .main
         containerView.addSubview(profileStackView)
-        
-
-    }
-    
-    func createNewConstraints() {
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalTo: containerView.widthAnchor),
-            centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            heightAnchor.constraint(equalTo: containerView.heightAnchor)
-        ])
-        
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        containerView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.centerXAnchor.constraint(equalTo: onlineView.centerXAnchor).isActive = true
-        profileImageView.centerYAnchor.constraint(equalTo: onlineView.centerYAnchor).isActive = true
-        
-        
-        onlineImageView.translatesAutoresizingMaskIntoConstraints = false
-        onlineImageView.trailingAnchor.constraint(equalTo: onlineView.trailingAnchor).isActive = true
-        onlineImageView.bottomAnchor.constraint(equalTo: onlineView.bottomAnchor).isActive = true
-        
-        
-        profileStackView.translatesAutoresizingMaskIntoConstraints = false
-        profileStackView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        profileStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16).isActive = true
-        profileStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant:  -16).isActive = true
-        profileStackView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        
-        
-    }
-    
-    func oldUI() {
-        addSubview(containerView)
-        containerView.addSubview(profileImageView)
-        containerView.addSubview(nameLabel)
-        containerView.addSubview(numberLabel)
-        containerView.addSubview(buttonsStackView)
-        containerView.addSubview(separator)
-        buttonsStackView.addArrangedSubview(emptyButton)
-        buttonsStackView.addArrangedSubview(messageButton)
-        buttonsStackView.addArrangedSubview(voiceCallButton)
-        buttonsStackView.addArrangedSubview(videoCallButton)
-        buttonsStackView.addArrangedSubview(muteButton)
-        buttonsStackView.addArrangedSubview(deleteButton)
-        buttonsStackView.addArrangedSubview(searchButton)
-        buttonsStackView.addArrangedSubview(emptyButton1)
-        containerView.addSubview(blockLabel)
-        containerView.addSubview(detailedBlockLabel)
-        containerView.addSubview(blockSwitch)
-        containerView.addSubview(separator1)
+        containerView.addSubview(topSeparator)
+        containerView.addSubview(infoLabel)
+        containerView.addSubview(nickNameStack)
+        containerView.addSubview(phoneStack)
+        containerView.addSubview(notificationStackView)
+        containerView.addSubview(silenceStackView)
+        containerView.addSubview(wallpaperLabel)
+        containerView.addSubview(melodyStack)
+        containerView.addSubview(blockStack)
+        containerView.addSubview(bottomSeparator)
         containerView.addSubview(segmentedControl)
     }
     
-    func setViewConstraints() {
+    private func createNewConstraints() {
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalTo: containerView.widthAnchor),
+            widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: 32),
             centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             heightAnchor.constraint(equalTo: containerView.heightAnchor)
         ])
@@ -304,56 +135,72 @@ final class StretchyTableViewHeaderView: UIView {
         containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         containerView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        profileImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        profileImageView.layer.cornerRadius = 100
-        profileImageView.layer.borderWidth = 2
-        profileImageView.layer.borderColor = #colorLiteral(red: 0.3215686275, green: 0.4745098039, blue: 0.4352941176, alpha: 1)
+        profileStackView.translatesAutoresizingMaskIntoConstraints = false
+        profileStackView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        profileStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        profileStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        profileStackView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.centerXAnchor.constraint(equalTo: profileImageView.centerXAnchor).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 16).isActive = true
-        numberLabel.translatesAutoresizingMaskIntoConstraints = false
-        numberLabel.centerXAnchor.constraint(equalTo: nameLabel.centerXAnchor).isActive = true
-        numberLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 4).isActive = true
+        topSeparator.translatesAutoresizingMaskIntoConstraints = false
+        topSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        topSeparator.topAnchor.constraint(equalTo: profileStackView.bottomAnchor, constant: 16).isActive = true
+        topSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
+        topSeparator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -16).isActive = true
         
-        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStackView.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 16).isActive = true
-        buttonsStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        buttonsStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        infoLabel.topAnchor.constraint(equalTo: topSeparator.bottomAnchor, constant: 16).isActive = true
+        infoLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        infoLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separator.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor, constant: 16).isActive = true
-        separator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        separator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        nickNameStack.translatesAutoresizingMaskIntoConstraints = false
+        nickNameStack.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 16).isActive = true
+        nickNameStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        nickNameStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
-        blockLabel.translatesAutoresizingMaskIntoConstraints = false
-        blockLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 16).isActive = true
-        blockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16).isActive = true
+        phoneStack.translatesAutoresizingMaskIntoConstraints = false
+        phoneStack.topAnchor.constraint(equalTo: nickNameStack.bottomAnchor, constant: 16).isActive = true
+        phoneStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        phoneStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         
-        detailedBlockLabel.translatesAutoresizingMaskIntoConstraints = false
-        detailedBlockLabel.topAnchor.constraint(equalTo: blockLabel.bottomAnchor).isActive = true
-        detailedBlockLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16).isActive = true
+        notificationStackView.translatesAutoresizingMaskIntoConstraints = false
+        notificationStackView.topAnchor.constraint(equalTo: phoneStack.bottomAnchor, constant: 16).isActive = true
+        notificationStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        notificationStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        notificationStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        blockSwitch.translatesAutoresizingMaskIntoConstraints = false
-        blockSwitch.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 16).isActive = true
-        blockSwitch.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -16).isActive = true
+        silenceStackView.translatesAutoresizingMaskIntoConstraints = false
+        silenceStackView.topAnchor.constraint(equalTo: notificationStackView.bottomAnchor, constant: 16).isActive = true
+        silenceStackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        silenceStackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        silenceStackView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
-        separator1.translatesAutoresizingMaskIntoConstraints = false
-        separator1.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separator1.topAnchor.constraint(equalTo: blockSwitch.bottomAnchor, constant: 16).isActive = true
-        separator1.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        separator1.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        wallpaperLabel.translatesAutoresizingMaskIntoConstraints = false
+        wallpaperLabel.topAnchor.constraint(equalTo: silenceStackView.bottomAnchor, constant: 16).isActive = true
+        wallpaperLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        wallpaperLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        
+        melodyStack.translatesAutoresizingMaskIntoConstraints = false
+        melodyStack.topAnchor.constraint(equalTo: wallpaperLabel.bottomAnchor, constant: 16).isActive = true
+        melodyStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        melodyStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        
+        blockStack.translatesAutoresizingMaskIntoConstraints = false
+        blockStack.topAnchor.constraint(equalTo: melodyStack.bottomAnchor, constant: 16).isActive = true
+        blockStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        blockStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        
+        bottomSeparator.translatesAutoresizingMaskIntoConstraints = false
+        bottomSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        bottomSeparator.topAnchor.constraint(equalTo: blockStack.bottomAnchor, constant: 16).isActive = true
+        bottomSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
+        bottomSeparator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -16).isActive = true
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.topAnchor.constraint(equalTo: separator1.bottomAnchor, constant: 16).isActive = true
+        segmentedControl.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 16).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
     }
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
