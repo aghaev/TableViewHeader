@@ -33,6 +33,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTableView.backgroundColor = .main
         navigationController?.navigationBar.backgroundColor = .main
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
+        
+        let leftBarItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(leftMenuItemSelected))
+            self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
+        
+        if #available(iOS 16.0, *) {
+            
+            let leftBarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.backward"), target: self, action: #selector(leftMenuItemSelected))
+                self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
+            leftBarItem.tintColor = .primary
+            
+            let rightBarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "phone"), target: self, action: #selector(rightMenuItemSelected))
+            rightBarItem.tintColor = .primary
+            self.navigationItem.setRightBarButton(rightBarItem, animated: false)
+        } else {
+            
+            let leftBtn = UIButton()
+            leftBtn.setImage(UIImage(systemName: "phone"), for: .normal)
+            leftBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
+            let leftBarItem = UIBarButtonItem(customView: leftBtn)
+            self.navigationItem.setRightBarButton(leftBarItem, animated: false)
+            leftBtn.tintColor = .primary
+            
+            let rightBtn = UIButton()
+            rightBtn.setImage(UIImage(systemName: "phone"), for: .normal)
+            rightBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
+            let rightBarItem = UIBarButtonItem(customView: rightBtn)
+            self.navigationItem.setRightBarButton(rightBarItem, animated: false)
+            rightBtn.tintColor = .primary
+        }
+            
+        
+        
         let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: view.frame.size.width,
                                                                height: 550))
@@ -47,6 +79,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         myTableView.tableHeaderView = header
     }
     
+    @objc func leftMenuItemSelected() {
+        print("Left button tapped")
+    }
+    @objc func rightMenuItemSelected() {
+        print("Right button tapped")
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
     }

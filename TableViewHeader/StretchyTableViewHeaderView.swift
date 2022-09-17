@@ -141,7 +141,7 @@ final class StretchyTableViewHeaderView: UIView {
         ])
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         containerView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
         profileStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -201,9 +201,9 @@ final class StretchyTableViewHeaderView: UIView {
         bottomSeparator.translatesAutoresizingMaskIntoConstraints = false
         bottomSeparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
         bottomSeparator.topAnchor.constraint(equalTo: blockStack.bottomAnchor, constant: 16).isActive = true
-        bottomSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
         bottomSeparator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -16).isActive = true
-        
+        bottomSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
+
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 16).isActive = true
         segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
@@ -236,5 +236,12 @@ final class StretchyTableViewHeaderView: UIView {
                                           secondLabel: self.phoneNumber,
                                           switchView: nil,
                                           isOn: nil)
+        
+        containerView.subviews.forEach({ subview in
+            subview.removeFromSuperview()
+        })
+        
+        configureUI()
+        configureConstraints()
     }
 }
