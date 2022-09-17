@@ -30,18 +30,18 @@ final class StretchyTableViewHeaderView: UIView {
         return label
     }()
     
-    private lazy var profileStackView = UIView().createProfileView(with: image,
-                                                           name: name,
-                                                           isOnline: isOnline,
-                                                           lastSeen: lastSeen)
+    private lazy var profileStackView = UIView().createProfileView(with: self.image,
+                                                                   name: self.name,
+                                                                   isOnline: self.isOnline,
+                                                                   lastSeen: self.lastSeen)
     
     private lazy var nickNameStack = UIView().createStack(with: "Istifadechi adi",
-                                                  secondLabel: nickName,
+                                                          secondLabel: self.nickName,
                                                   switchView: nil,
                                                   isOn: nil)
     
     private lazy var phoneStack = UIView().createStack(with: "Mobil nomre",
-                                               secondLabel: phoneNumber,
+                                                       secondLabel: self.phoneNumber,
                                                switchView: nil,
                                                isOn: nil)
     
