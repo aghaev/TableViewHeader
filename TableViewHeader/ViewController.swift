@@ -23,19 +23,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Mesajlar"
-
+        configureBarButtonItems()
         view.addSubview(myTableView)
-        
+    
         myTableView.delegate = self
         myTableView.dataSource = self
         myTableView.frame = view.bounds
         myTableView.backgroundColor = .main
+        
+        let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
+                                                               width: view.frame.size.width,
+                                                               height: 550))
+
+        header.image = UIImage(named: "aydin")!
+        header.name = "Aydin Aghayev"
+        header.isOnline = true
+        header.lastSeen = "Onlayn"
+        header.nickName = "@aghay3v"
+        header.phoneNumber = "+994 55 681 34 41"
+    
+        myTableView.tableHeaderView = header
+    }
+    
+    func configureBarButtonItems() {
+        title = "Mesajlar"
         navigationController?.navigationBar.backgroundColor = .main
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
-        
-        let leftBarItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(leftMenuItemSelected))
-            self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
         
         if #available(iOS 16.0, *) {
             
@@ -62,21 +75,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.navigationItem.setRightBarButton(rightBarItem, animated: false)
             rightBtn.tintColor = .primary
         }
-            
-        
-        
-        let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
-                                                               width: view.frame.size.width,
-                                                               height: 550))
-
-        header.image = UIImage(named: "aydin")!
-        header.name = "Aydin Aghayev"
-        header.isOnline = true
-        header.lastSeen = "Onlayn"
-        header.nickName = "@aghay3v"
-        header.phoneNumber = "+994 55 681 34 41"
-        
-        myTableView.tableHeaderView = header
     }
     
     @objc func leftMenuItemSelected() {
