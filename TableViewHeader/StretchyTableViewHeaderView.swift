@@ -9,22 +9,10 @@ import UIKit
 
 final class StretchyTableViewHeaderView: UIView {
     
-    public var image: UIImage = UIImage()
-    public var name: String = ""
-    public var isOnline: Bool = true
-    public var lastSeen: String = ""
-    
-    init(image: UIImage, name: String, isOnline: Bool, lastSeen: String) {
-        self.image = image
-        self.name = name
-        self.isOnline = isOnline
-        self.lastSeen = lastSeen
-    }
-    
-    private let profileStackView = UIView().createProfileView(with: self.image,
-                                                              name: name,
-                                                              isOnline: isOnline,
-                                                              lastSeen: lastSeen)
+    private let profileStackView = UIView().createProfileView(with: UIImage(named: "aydin")!,
+                                                              name: "Aydin Aghayev",
+                                                              isOnline: true,
+                                                              lastSeen: "Onlayn")
     
     private let topSeparator: UIView = {
         let separator = UIView()

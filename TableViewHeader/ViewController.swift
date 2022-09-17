@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                                height: 550))
 //        header.profileImageView.image = UIImage(named: "aydin")
 //        header.nameLabel.text = "Aydin Aghayev"
-        let qwe = StretchyTableViewHeaderView(image: UIImage(named: "aydin")!, name: "ass", isOnline: true, lastSeen: "sdsd")
+//        let qwe = StretchyTableViewHeaderView(image: UIImage(named: "aydin")!, name: "ass", isOnline: true, lastSeen: "sdsd")
         myTableView.tableHeaderView = header
     }
     
