@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     
     func registerNotification() {
         let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(segmentIndexValueDidChange), name: .valueDidChange, object: nil)
+        nc.addObserver(self, selector: #selector(segmentIndexValueDidChange), name: .segmentioIndexDidChange, object: nil)
     }
     
     @objc func segmentIndexValueDidChange(_ notification: Notification) {
@@ -61,10 +61,11 @@ class ViewController: UIViewController {
         title = "Mesajlar"
         
         let style = UINavigationBarAppearance()
-        style.backgroundColor = .main
+//        style.backgroundColor = .clear
+        style.configureWithTransparentBackground()
         style.titleTextAttributes = [.foregroundColor: UIColor.primary]
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.backgroundColor = .main
+//        navigationController?.navigationBar.backgroundColor = .main
         navigationController?.navigationBar.standardAppearance = style
         navigationController?.navigationBar.scrollEdgeAppearance = style
         
@@ -119,7 +120,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         _ = scrollDiff < 0
         
         self.previousScrollOffset = scrollView.contentOffset.y
-        //
+        
         //        let someView = UIStackView()
         //        someView.translatesAutoresizingMaskIntoConstraints = false
         //        someView.axis = .horizontal
@@ -144,16 +145,23 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         //        someView.addArrangedSubview(uiImageview)
         
-        //        if scrollView.contentOffset.y > 110 {
-        //            navigationItem.titleView = someView
-        //        } else {
-        //            navigationItem.title = ""
-        //            navigationItem.titleView = nil
-        //        }
-        //
-        //        if scrollView.contentOffset.y > 155 {
-        //            someView.addArrangedSubview(someLabel)
-        //        }
+                if scrollView.contentOffset.y > -80 {
+                    title = ""
+                    if #available(iOS 16.0, *) {
+                        navigationItem.rightBarButtonItem?.isHidden = true
+                    }
+                    if #available(iOS 16.0, *) {
+                        navigationItem.leftBarButtonItem?.isHidden = true
+                    }
+                } else {
+                    title = "Mesajlar"
+                    if #available(iOS 16.0, *) {
+                        navigationItem.rightBarButtonItem?.isHidden = false
+                    }
+                    if #available(iOS 16.0, *) {
+                        navigationItem.leftBarButtonItem?.isHidden = false
+                    }
+                }
         
         print(scrollView.contentOffset.y)
     }

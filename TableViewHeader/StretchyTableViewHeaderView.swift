@@ -81,6 +81,16 @@ final class StretchyTableViewHeaderView: UIView {
                                                        switchView: UISwitch(),
                                                        isOn: true)
     
+    func registerNotification() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(switchValueChanged), name: .switchValueChanged, object: nil)
+    }
+    
+    @objc func switchValueChanged(_ notification: Notification) {
+        guard let value = notification.object as? [Int:Bool] else {return}
+        print(value)
+    }
+    
     private lazy var bottomSeparator: UIView = {
         let separator = UIView()
         separator.backgroundColor = .lightGray
@@ -125,7 +135,7 @@ final class StretchyTableViewHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        registerNotification()
         updateData()
         configureUI()
         configureConstraints()
@@ -134,7 +144,7 @@ final class StretchyTableViewHeaderView: UIView {
         segmentioView.valueDidChange = { segmentio, segmentIndex in
             print("Selected item: ", segmentIndex)
             let nc = NotificationCenter.default
-            nc.post(name: .valueDidChange, object: ["index": segmentIndex])
+            nc.post(name: .segmentioIndexDidChange, object: ["index": segmentIndex])
         }
     }
     
@@ -321,5 +331,6 @@ final class StretchyTableViewHeaderView: UIView {
 
 extension Notification.Name {
     
-    static var valueDidChange = Notification.Name("valueDidChange")
+    static var segmentioIndexDidChange = Notification.Name("segmentioIndexDidChange")
+    static var switchValueChanged = Notification.Name("switchValueChanged")
 }

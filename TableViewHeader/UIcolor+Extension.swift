@@ -94,6 +94,7 @@ extension UIView {
             return verticalStackView
         } else {
             switchView?.isOn = isOn!
+            switchView?.addTarget(self, action: #selector(onSwitchValueChanged), for: .valueChanged)
             let horizontalStackView: UIStackView = {
                 let sv = UIStackView()
                 sv.distribution = .fill
@@ -107,6 +108,14 @@ extension UIView {
             return horizontalStackView
         }
     }
+    
+    @objc func onSwitchValueChanged(_ switchs: UISwitch) {
+        let qwe = [switchs.hashValue : switchs.isOn]
+        let nc = NotificationCenter.default
+        nc.post(name: .switchValueChanged, object: qwe)
+    }
+
+    
     
     func createProfileView(with image: UIImage, name: String, isOnline: Bool, lastSeen: String) -> UIStackView {
         
