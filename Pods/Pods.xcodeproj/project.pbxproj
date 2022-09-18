@@ -17,7 +17,7 @@
 		79A6C4D0E68777B438FB8D9D964C87B4 /* SegmentioCellWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBC69D7042FC25109831DFA96EDE06B /* SegmentioCellWithLabel.swift */; };
 		83AE6249033A8D067BD881A24BB65A57 /* SegmentioCellWithImageOverLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130ECB1AA82131B47DC4E25F9B6244BC /* SegmentioCellWithImageOverLabel.swift */; };
 		852A868A984EB67068160C2987B5F039 /* SegmentioCellWithImageAfterLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D394D46B3611C822E7430E7E585E990 /* SegmentioCellWithImageAfterLabel.swift */; };
-		866DFC022937069F38003035850BB546 /* Segmentio-Segmentio in Resources */ = {isa = PBXBuildFile; fileRef = C8F2C375082C9FA86026FA0A69016000 /* Segmentio-Segmentio */; };
+		866DFC022937069F38003035850BB546 /* Segmentio.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C8F2C375082C9FA86026FA0A69016000 /* Segmentio.bundle */; };
 		A45C6978B572456DB3BA5B4AF399C2F7 /* BadgeWithCounterViewBigSized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67B36130AF853BD5D7CC609180A33B2F /* BadgeWithCounterViewBigSized.xib */; };
 		A7D01C817C3D67F23DB842D897E60CAD /* BadgeWithCounterViewStandardSized.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80B4A9CEF006BC1AF2CCFC364E656BC6 /* BadgeWithCounterViewStandardSized.xib */; };
 		A9DEC2858D61FE26F29F26286A72EA30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -75,17 +75,17 @@
 		80B4A9CEF006BC1AF2CCFC364E656BC6 /* BadgeWithCounterViewStandardSized.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BadgeWithCounterViewStandardSized.xib; path = Segmentio/Source/Badge/Views/BadgeWithCounterViewStandardSized.xib; sourceTree = "<group>"; };
 		90A4594DF6D958AD8D5CED77A6613B45 /* BadgeWithCounterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BadgeWithCounterView.swift; path = Segmentio/Source/Badge/Views/BadgeWithCounterView.swift; sourceTree = "<group>"; };
 		929C22FAA6CAE984A78801B803B8A418 /* Pods-TableViewHeader */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-TableViewHeader"; path = Pods_TableViewHeader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1A5C49DF7E44DC724D714B3366800C3 /* UIView+Appearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Appearance.swift"; path = "Segmentio/Source/Extensions/UIView+Appearance.swift"; sourceTree = "<group>"; };
 		A262076EB52B3024ADBDFF7F3E5B8DFF /* Pods-TableViewHeader.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TableViewHeader.modulemap"; sourceTree = "<group>"; };
 		B45A115F99CACE7C4E786976B7598070 /* SegmentioCellWithImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentioCellWithImage.swift; path = Segmentio/Source/Cells/SegmentioCellWithImage.swift; sourceTree = "<group>"; };
 		C285BD37ABA8850040D8892FFA453D6D /* Pods-TableViewHeader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TableViewHeader.release.xcconfig"; sourceTree = "<group>"; };
 		C2C3710018B3024C2EBB94798D1D5903 /* SegmentioOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentioOptions.swift; path = Segmentio/Source/SegmentioOptions.swift; sourceTree = "<group>"; };
-		C8F2C375082C9FA86026FA0A69016000 /* Segmentio-Segmentio */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Segmentio-Segmentio"; path = Segmentio.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8F2C375082C9FA86026FA0A69016000 /* Segmentio.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Segmentio.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9D2414B33810D0AE23D100AAE68A847 /* Segmentio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Segmentio.release.xcconfig; sourceTree = "<group>"; };
 		DDBC69D7042FC25109831DFA96EDE06B /* SegmentioCellWithLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentioCellWithLabel.swift; path = Segmentio/Source/Cells/SegmentioCellWithLabel.swift; sourceTree = "<group>"; };
 		E01058B2ACD9B203D20E18CF5BAEBD59 /* ResourceBundle-Segmentio-Segmentio-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Segmentio-Segmentio-Info.plist"; sourceTree = "<group>"; };
-		E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Segmentio; path = Segmentio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Segmentio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1C69C0A7883827549E1E3A10B945A9 /* Segmentio.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Segmentio.swift; path = Segmentio/Source/Segmentio.swift; sourceTree = "<group>"; };
 		F2AF1221E6A553678748959F1A3FEEA7 /* Segmentio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Segmentio-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				929C22FAA6CAE984A78801B803B8A418 /* Pods-TableViewHeader */,
-				E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */,
-				C8F2C375082C9FA86026FA0A69016000 /* Segmentio-Segmentio */,
+				E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */,
+				C8F2C375082C9FA86026FA0A69016000 /* Segmentio.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,7 +179,6 @@
 				2EEB1045734230F77DB718DE98851269 /* Resources */,
 				032F0C8DF95179F8918CA9DC9DA52362 /* Support Files */,
 			);
-			name = Segmentio;
 			path = Segmentio;
 			sourceTree = "<group>";
 		};
@@ -273,7 +272,7 @@
 			);
 			name = Segmentio;
 			productName = Segmentio;
-			productReference = E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */;
+			productReference = E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5DDA1945A355CA8627C1177E395C7B1F /* Pods-TableViewHeader */ = {
@@ -309,7 +308,7 @@
 			);
 			name = "Segmentio-Segmentio";
 			productName = Segmentio;
-			productReference = C8F2C375082C9FA86026FA0A69016000 /* Segmentio-Segmentio */;
+			productReference = C8F2C375082C9FA86026FA0A69016000 /* Segmentio.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -355,7 +354,7 @@
 			files = (
 				A45C6978B572456DB3BA5B4AF399C2F7 /* BadgeWithCounterViewBigSized.xib in Resources */,
 				A7D01C817C3D67F23DB842D897E60CAD /* BadgeWithCounterViewStandardSized.xib in Resources */,
-				866DFC022937069F38003035850BB546 /* Segmentio-Segmentio in Resources */,
+				866DFC022937069F38003035850BB546 /* Segmentio.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +567,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Segmentio/Segmentio-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Segmentio/Segmentio-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -593,9 +592,10 @@
 			baseConfigurationReference = C9D2414B33810D0AE23D100AAE68A847 /* Segmentio.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Segmentio";
+				DEVELOPMENT_TEAM = SKY5Q4QK25;
 				IBSC_MODULE = Segmentio;
 				INFOPLIST_FILE = "Target Support Files/Segmentio/ResourceBundle-Segmentio-Segmentio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = Segmentio;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -657,7 +657,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Segmentio/Segmentio-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Segmentio/Segmentio-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,9 +718,10 @@
 			baseConfigurationReference = 2A2ECC3667336ADC06AA532FC4178B7B /* Segmentio.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Segmentio";
+				DEVELOPMENT_TEAM = SKY5Q4QK25;
 				IBSC_MODULE = Segmentio;
 				INFOPLIST_FILE = "Target Support Files/Segmentio/ResourceBundle-Segmentio-Segmentio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = Segmentio;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

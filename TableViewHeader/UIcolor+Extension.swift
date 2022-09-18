@@ -170,6 +170,7 @@ extension UIView {
             let label = UILabel()
             label.text = lastSeen // temprorary
             label.font = .systemFont(ofSize: 12, weight: .thin)
+            label.textColor = .primary
             return label
         }()
         

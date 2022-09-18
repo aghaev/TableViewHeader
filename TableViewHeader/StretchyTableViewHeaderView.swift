@@ -106,7 +106,7 @@ final class StretchyTableViewHeaderView: UIView {
     let segmentioView: Segmentio = Segmentio()
     var content = [SegmentioItem]()
     
-    let links = SegmentioItem(
+    var links = SegmentioItem(
         title: "Linklər",
         image: UIImage(systemName: "link")
     )
@@ -138,6 +138,12 @@ final class StretchyTableViewHeaderView: UIView {
         configureUI()
         configureConstraints()
         confSegmentio()
+        
+        segmentioView.valueDidChange = { segmentio, segmentIndex in
+            print("Selected item: ", segmentIndex)
+            let nc = NotificationCenter.default
+            nc.post(name: .valueDidChange, object: ["index": segmentIndex])
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -212,8 +218,39 @@ final class StretchyTableViewHeaderView: UIView {
             style: .onlyLabel,
             options: options
         )
+        
     }
     
+    
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
+        containerViewHeight.constant = scrollView.contentInset.top
+        let ofsetY = -(scrollView.contentOffset.y + scrollView.contentInset.top)
+        print("scrollView.contentSize.height", scrollView.contentSize.height)
+    }
+    
+    func updateData() {
+        profileStackView = UIView().createProfileView(with: self.image,
+                                                      name: self.name,
+                                                      isOnline: self.isOnline,
+                                                      lastSeen: self.lastSeen)
+        
+        nickNameStack = UIView().createStack(with: "Istifadechi adi",
+                                             secondLabel: self.nickName,
+                                             switchView: nil,
+                                             isOn: nil)
+        
+        phoneStack = UIView().createStack(with: "Mobil nomre",
+                                          secondLabel: self.phoneNumber,
+                                          switchView: nil,
+                                          isOn: nil)
+        
+        containerView.subviews.forEach({ subview in
+            subview.removeFromSuperview()
+        })
+        configureUI()
+        configureConstraints()
+    }
+
     private func configureConstraints() {
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalTo: containerView.widthAnchor, constant: 32),
@@ -288,40 +325,12 @@ final class StretchyTableViewHeaderView: UIView {
         segmentioView.translatesAutoresizingMaskIntoConstraints = false
         segmentioView.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 8).isActive = true
         segmentioView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        segmentioView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        segmentioView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -24).isActive = true
         segmentioView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
     }
+}
+
+extension Notification.Name {
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
-        containerViewHeight.constant = scrollView.contentInset.top
-        let ofsetY = -(scrollView.contentOffset.y + scrollView.contentInset.top)
-        containerView.clipsToBounds = ofsetY <= 0
-        imageViewBottom.constant = ofsetY >= 0 ? 0: -ofsetY / 2
-        imageViewHeidht.constant = max(ofsetY + scrollView.contentInset.top, scrollView.contentInset.top)
-        print(scrollView.contentSize.height)
-    }
-    
-    func updateData() {
-        profileStackView = UIView().createProfileView(with: self.image,
-                                                      name: self.name,
-                                                      isOnline: self.isOnline,
-                                                      lastSeen: self.lastSeen)
-        
-        nickNameStack = UIView().createStack(with: "Istifadechi adi",
-                                             secondLabel: self.nickName,
-                                             switchView: nil,
-                                             isOn: nil)
-        
-        phoneStack = UIView().createStack(with: "Mobil nomre",
-                                          secondLabel: self.phoneNumber,
-                                          switchView: nil,
-                                          isOn: nil)
-        
-        containerView.subviews.forEach({ subview in
-            subview.removeFromSuperview()
-        })
-        
-        configureUI()
-        configureConstraints()
-    }
+    static var valueDidChange = Notification.Name("valueDidChange")
 }

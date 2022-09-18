@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: view.frame.size.width,
-                                                               height: 700))
+                                                               height: 530))
 
         header.image = UIImage(named: "aydin")!
         header.name = "Aydin Aghayev"
@@ -43,26 +43,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         header.phoneNumber = "+994 55 681 34 41"
     
         myTableView.tableHeaderView = header
+        print("viewDidload")
+        registerNotification()
+    }
+    
+    func registerNotification() {
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(segmentIndexValueDidChange), name: .valueDidChange, object: nil)
+    }
+    
+    @objc func segmentIndexValueDidChange(_ notification: Notification) {
+        let value = notification.object as? [String: Int] ?? [:]
+        let changedValue = value["index"] ?? 0
+        print(changedValue)
     }
     
     func configureBarButtonItems() {
         title = "Mesajlar"
-        navigationController?.navigationBar.backgroundColor = .main
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
         
-            let leftBtn = UIButton()
-            leftBtn.setImage(UIImage(systemName: "phone"), for: .normal)
-            leftBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
-            let leftBarItem = UIBarButtonItem(customView: leftBtn)
-            self.navigationItem.setRightBarButton(leftBarItem, animated: false)
-            leftBtn.tintColor = .primary
-            
-            let rightBtn = UIButton()
-            rightBtn.setImage(UIImage(systemName: "phone"), for: .normal)
-            rightBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
-            let rightBarItem = UIBarButtonItem(customView: rightBtn)
-            self.navigationItem.setRightBarButton(rightBarItem, animated: false)
-            rightBtn.tintColor = .primary
+        let style = UINavigationBarAppearance()
+        style.backgroundColor = .main
+        style.titleTextAttributes = [.foregroundColor: UIColor.primary]
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = .main
+        navigationController?.navigationBar.standardAppearance = style
+        navigationController?.navigationBar.scrollEdgeAppearance = style
+        
+        let leftBtn = UIButton()
+        leftBtn.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        leftBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
+        let leftBarItem = UIBarButtonItem(customView: leftBtn)
+        self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
+        leftBtn.tintColor = .primary
+        
+        let rightBtn = UIButton()
+        rightBtn.setImage(UIImage(systemName: "phone"), for: .normal)
+        rightBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
+        let rightBarItem = UIBarButtonItem(customView: rightBtn)
+        self.navigationItem.setRightBarButton(rightBarItem, animated: false)
+        rightBtn.tintColor = .primary
         
     }
     
@@ -80,6 +99,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = model[indexPath.row]
         cell.backgroundColor = .main
+        cell.textLabel?.textColor = .primary
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -95,30 +116,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         _ = scrollDiff < 0
         
         self.previousScrollOffset = scrollView.contentOffset.y
+//        
+//        let someView = UIStackView()
+//        someView.translatesAutoresizingMaskIntoConstraints = false
+//        someView.axis = .horizontal
+//        someView.alignment = .center
+//        someView.distribution = .fill
+//        someView.spacing = 20
+////        
+//        let uiImageview = UIImageView()
+//        let image = UIImage(named: "aydin")
+//        let height = (navigationController?.navigationBar.frame.size.height)!
+//        let roundedImage = image?.resize(withSize: CGSize(width: height, height: height), contentMode: .contentAspectFit)
+//        uiImageview.translatesAutoresizingMaskIntoConstraints = false
+//        uiImageview.image = roundedImage
+//        uiImageview.layer.cornerRadius = height / 2
+//        uiImageview.clipsToBounds = true
+//        uiImageview.contentMode = .scaleAspectFit
+//
+//        let someLabel = UILabel()
+//        someLabel.font = .boldSystemFont(ofSize: 20)
+//        someLabel.text = "Aydin Aghayev"
+//        someLabel.textColor = .primary
         
-        let someView = UIStackView()
-        someView.translatesAutoresizingMaskIntoConstraints = false
-        someView.axis = .horizontal
-        someView.alignment = .center
-        someView.distribution = .fill
-        someView.spacing = 20
-        
-        let uiImageview = UIImageView()
-        let image = UIImage(named: "aydin")
-        let height = (navigationController?.navigationBar.frame.size.height)!
-        let roundedImage = image?.resize(withSize: CGSize(width: height, height: height), contentMode: .contentAspectFit)
-        uiImageview.translatesAutoresizingMaskIntoConstraints = false
-        uiImageview.image = roundedImage
-        uiImageview.layer.cornerRadius = height / 2
-        uiImageview.clipsToBounds = true
-        uiImageview.contentMode = .scaleAspectFit
-
-        let someLabel = UILabel()
-        someLabel.font = .boldSystemFont(ofSize: 20)
-        someLabel.text = "Aydin Aghayev"
-        someLabel.textColor = .primary
-        
-        someView.addArrangedSubview(uiImageview)
+//        someView.addArrangedSubview(uiImageview)
         
 //        if scrollView.contentOffset.y > 110 {
 //            navigationItem.titleView = someView
