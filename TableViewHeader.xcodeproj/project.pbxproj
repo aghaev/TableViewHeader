@@ -17,7 +17,6 @@
 		DB81E8AB28D09462002D70D0 /* StretchyTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */; };
 		DB9BAFE128D1048900C1BB37 /* CSegControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9BAFE028D1048900C1BB37 /* CSegControl.swift */; };
 		DB9BAFE328D105B500C1BB37 /* UIcolor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */; };
-		DB9D922E28D71F95008C8903 /* Segmentio1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9D922D28D71F95008C8903 /* Segmentio1.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableViewHeaderView.swift; sourceTree = "<group>"; };
 		DB9BAFE028D1048900C1BB37 /* CSegControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSegControl.swift; sourceTree = "<group>"; };
 		DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor+Extension.swift"; sourceTree = "<group>"; };
-		DB9D922D28D71F95008C8903 /* Segmentio1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segmentio1.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +96,6 @@
 				DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */,
 				DB9BAFE028D1048900C1BB37 /* CSegControl.swift */,
 				DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */,
-				DB9D922D28D71F95008C8903 /* Segmentio1.swift */,
 			);
 			path = TableViewHeader;
 			sourceTree = "<group>";
@@ -219,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB81E89B28D08AB4002D70D0 /* ViewController.swift in Sources */,
-				DB9D922E28D71F95008C8903 /* Segmentio1.swift in Sources */,
 				DB9BAFE328D105B500C1BB37 /* UIcolor+Extension.swift in Sources */,
 				DB81E89728D08AB4002D70D0 /* AppDelegate.swift in Sources */,
 				DB81E89928D08AB4002D70D0 /* SceneDelegate.swift in Sources */,

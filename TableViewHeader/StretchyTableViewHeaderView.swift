@@ -103,14 +103,41 @@ final class StretchyTableViewHeaderView: UIView {
     private var containerViewHeight = NSLayoutConstraint()
     private let minHeaderHeight: CGFloat = 44
     
-    let segmentioView = SegmentioView()
+    let segmentioView: Segmentio = Segmentio()
+    var content = [SegmentioItem]()
+    
+    let links = SegmentioItem(
+        title: "Linklər",
+        image: UIImage(systemName: "link")
+    )
+    
+    let groups = SegmentioItem(
+        title: "Qruplar",
+        image: UIImage(systemName: "person.3")
+    )
+    
+    let gallery = SegmentioItem(
+        title: "Qalereya",
+        image: UIImage(systemName: "photo")
+    )
+    
+    let files = SegmentioItem(
+        title: "Fayllar",
+        image: UIImage(systemName: "folder")
+    )
+    
+    let voiceRecords = SegmentioItem(
+        title: "Səsli messajlar",
+        image: UIImage(systemName: "mic")
+    )
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        confSegmentio()
+
         updateData()
         configureUI()
         configureConstraints()
+        confSegmentio()
     }
     
     required init?(coder: NSCoder) {
@@ -138,7 +165,53 @@ final class StretchyTableViewHeaderView: UIView {
     }
     
     func confSegmentio() {
-        segmentioView.setup()
+        content.append(links)
+        content.append(groups)
+        content.append(gallery)
+        content.append(files)
+        content.append(voiceRecords)
+        segmentioView.selectedSegmentioIndex = 0
+        setup()
+    }
+    
+    func setup() {
+        func segmentioState(backgroundColor: UIColor, titleFont: UIFont, titleTextColor: UIColor) -> SegmentioState {
+            return SegmentioState(
+                backgroundColor: backgroundColor,
+                titleFont: titleFont,
+                titleTextColor: titleTextColor
+            )
+        }
+    
+        func segmentioStates() -> SegmentioStates {
+            let font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            return SegmentioStates(
+                defaultState: segmentioState(
+                    backgroundColor: .clear,
+                    titleFont: font,
+                    titleTextColor: .primary
+                ),
+                selectedState: segmentioState(
+                    backgroundColor: .clear,
+                    titleFont: font,
+                    titleTextColor: .gray
+                    
+                ),
+                highlightedState: segmentioState(
+                    backgroundColor: .clear,
+                    titleFont: font,
+                    titleTextColor: .primary
+                )
+            )
+        }
+        
+        let options: SegmentioOptions = SegmentioOptions(backgroundColor: .main, segmentPosition: .dynamic, scrollEnabled: true, indicatorOptions: .init(type: .bottom, ratio: 0.6, height: 1, color: .primary), horizontalSeparatorOptions: .none, verticalSeparatorOptions: .none, imageContentMode: .center, labelTextAlignment: .left, labelTextNumberOfLines: 1, segmentStates: segmentioStates(), animationDuration: 0.1)
+        
+        segmentioView.setup(
+            content: content,
+            style: .onlyLabel,
+            options: options
+        )
     }
     
     private func configureConstraints() {
@@ -212,12 +285,11 @@ final class StretchyTableViewHeaderView: UIView {
         bottomSeparator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -16).isActive = true
         bottomSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
         
-        
         segmentioView.translatesAutoresizingMaskIntoConstraints = false
-        segmentioView.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 16).isActive = true
+        segmentioView.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 8).isActive = true
         segmentioView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         segmentioView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        segmentioView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        segmentioView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
     }
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {
