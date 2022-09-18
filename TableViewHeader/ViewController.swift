@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
 
     private let myTableView: UITableView = {
         let tableView = UITableView()
@@ -43,7 +43,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         header.phoneNumber = "+994 55 681 34 41"
     
         myTableView.tableHeaderView = header
-        print("viewDidload")
         registerNotification()
     }
     
@@ -69,20 +68,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.standardAppearance = style
         navigationController?.navigationBar.scrollEdgeAppearance = style
         
-        let leftBtn = UIButton()
-        leftBtn.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        leftBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
-        let leftBarItem = UIBarButtonItem(customView: leftBtn)
+        let leftBarItem = configureBarButton(with: "arrow.backward", selector: #selector(rightMenuItemSelected))
         self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
-        leftBtn.tintColor = .primary
-        
-        let rightBtn = UIButton()
-        rightBtn.setImage(UIImage(systemName: "phone"), for: .normal)
-        rightBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
-        let rightBarItem = UIBarButtonItem(customView: rightBtn)
+        let rightBarItem = configureBarButton(with: "phone", selector: #selector(rightMenuItemSelected))
         self.navigationItem.setRightBarButton(rightBarItem, animated: false)
-        rightBtn.tintColor = .primary
-        
     }
     
     @objc func leftMenuItemSelected() {
@@ -91,6 +80,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @objc func rightMenuItemSelected() {
         print("Right button tapped")
     }
+    
+    func configureBarButton(with name: String, selector: Selector) -> UIBarButtonItem {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: name), for: .normal)
+        button.addTarget(self, action: selector, for: .touchUpInside)
+        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22), forImageIn: .normal)
+        button.tintColor = .primary
+        let barButtonItem = UIBarButtonItem(customView: button)
+        return barButtonItem
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return model.count
     }
@@ -116,41 +119,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         _ = scrollDiff < 0
         
         self.previousScrollOffset = scrollView.contentOffset.y
-//        
-//        let someView = UIStackView()
-//        someView.translatesAutoresizingMaskIntoConstraints = false
-//        someView.axis = .horizontal
-//        someView.alignment = .center
-//        someView.distribution = .fill
-//        someView.spacing = 20
-////        
-//        let uiImageview = UIImageView()
-//        let image = UIImage(named: "aydin")
-//        let height = (navigationController?.navigationBar.frame.size.height)!
-//        let roundedImage = image?.resize(withSize: CGSize(width: height, height: height), contentMode: .contentAspectFit)
-//        uiImageview.translatesAutoresizingMaskIntoConstraints = false
-//        uiImageview.image = roundedImage
-//        uiImageview.layer.cornerRadius = height / 2
-//        uiImageview.clipsToBounds = true
-//        uiImageview.contentMode = .scaleAspectFit
-//
-//        let someLabel = UILabel()
-//        someLabel.font = .boldSystemFont(ofSize: 20)
-//        someLabel.text = "Aydin Aghayev"
-//        someLabel.textColor = .primary
+        //
+        //        let someView = UIStackView()
+        //        someView.translatesAutoresizingMaskIntoConstraints = false
+        //        someView.axis = .horizontal
+        //        someView.alignment = .center
+        //        someView.distribution = .fill
+        //        someView.spacing = 20
+        ////
+        //        let uiImageview = UIImageView()
+        //        let image = UIImage(named: "aydin")
+        //        let height = (navigationController?.navigationBar.frame.size.height)!
+        //        let roundedImage = image?.resize(withSize: CGSize(width: height, height: height), contentMode: .contentAspectFit)
+        //        uiImageview.translatesAutoresizingMaskIntoConstraints = false
+        //        uiImageview.image = roundedImage
+        //        uiImageview.layer.cornerRadius = height / 2
+        //        uiImageview.clipsToBounds = true
+        //        uiImageview.contentMode = .scaleAspectFit
+        //
+        //        let someLabel = UILabel()
+        //        someLabel.font = .boldSystemFont(ofSize: 20)
+        //        someLabel.text = "Aydin Aghayev"
+        //        someLabel.textColor = .primary
         
-//        someView.addArrangedSubview(uiImageview)
+        //        someView.addArrangedSubview(uiImageview)
         
-//        if scrollView.contentOffset.y > 110 {
-//            navigationItem.titleView = someView
-//        } else {
-//            navigationItem.title = ""
-//            navigationItem.titleView = nil
-//        }
-//        
-//        if scrollView.contentOffset.y > 155 {
-//            someView.addArrangedSubview(someLabel)
-//        }
+        //        if scrollView.contentOffset.y > 110 {
+        //            navigationItem.titleView = someView
+        //        } else {
+        //            navigationItem.title = ""
+        //            navigationItem.titleView = nil
+        //        }
+        //
+        //        if scrollView.contentOffset.y > 155 {
+        //            someView.addArrangedSubview(someLabel)
+        //        }
         
         print(scrollView.contentOffset.y)
     }

@@ -10,24 +10,16 @@ import Segmentio
 
 final class StretchyTableViewHeaderView: UIView {
     
-    public var image: UIImage = UIImage() {
-        didSet{
-            updateData()
-        }
-    }
-    public var name: String = "" {
-        didSet{
-            updateData()
-        }
-    }
-    public var isOnline: Bool = true {
-        didSet{
-            updateData()
-        }
-    }
+    public var image: UIImage = UIImage()
+    public var name: String = ""
+    public var isOnline: Bool = true
     public var lastSeen: String = "" {
         didSet{
-            updateData()
+//            updateData()
+            profileStackView = UIView().createProfileView(with: self.image,
+                                                          name: self.name,
+                                                          isOnline: self.isOnline,
+                                                          lastSeen: self.lastSeen)
         }
     }
     public var nickName: String = "" {
@@ -190,22 +182,24 @@ final class StretchyTableViewHeaderView: UIView {
         }
     
         func segmentioStates() -> SegmentioStates {
-            let font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            let defaultFont = UIFont.systemFont(ofSize: 16, weight: .regular)
+            let selectedFont = UIFont.systemFont(ofSize: 20, weight: .bold)
+            let highlightedFont = UIFont.systemFont(ofSize: 16, weight: .thin)
             return SegmentioStates(
                 defaultState: segmentioState(
                     backgroundColor: .clear,
-                    titleFont: font,
+                    titleFont: defaultFont,
                     titleTextColor: .primary
                 ),
                 selectedState: segmentioState(
                     backgroundColor: .clear,
-                    titleFont: font,
-                    titleTextColor: .gray
+                    titleFont: selectedFont,
+                    titleTextColor: .primary
                     
                 ),
                 highlightedState: segmentioState(
                     backgroundColor: .clear,
-                    titleFont: font,
+                    titleFont: highlightedFont,
                     titleTextColor: .primary
                 )
             )
@@ -229,11 +223,6 @@ final class StretchyTableViewHeaderView: UIView {
     }
     
     func updateData() {
-        profileStackView = UIView().createProfileView(with: self.image,
-                                                      name: self.name,
-                                                      isOnline: self.isOnline,
-                                                      lastSeen: self.lastSeen)
-        
         nickNameStack = UIView().createStack(with: "Istifadechi adi",
                                              secondLabel: self.nickName,
                                              switchView: nil,
