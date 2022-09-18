@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Segmentio
 
 final class StretchyTableViewHeaderView: UIView {
     
@@ -102,8 +103,11 @@ final class StretchyTableViewHeaderView: UIView {
     private var containerViewHeight = NSLayoutConstraint()
     private let minHeaderHeight: CGFloat = 44
     
+    let segmentioView = SegmentioView()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+//        confSegmentio()
         updateData()
         configureUI()
         configureConstraints()
@@ -130,7 +134,11 @@ final class StretchyTableViewHeaderView: UIView {
         containerView.addSubview(melodyStack)
         containerView.addSubview(blockStack)
         containerView.addSubview(bottomSeparator)
-        containerView.addSubview(segmentedControl)
+        containerView.addSubview(segmentioView)
+    }
+    
+    func confSegmentio() {
+        segmentioView.setup()
     }
     
     private func configureConstraints() {
@@ -203,13 +211,13 @@ final class StretchyTableViewHeaderView: UIView {
         bottomSeparator.topAnchor.constraint(equalTo: blockStack.bottomAnchor, constant: 16).isActive = true
         bottomSeparator.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: -16).isActive = true
         bottomSeparator.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 16).isActive = true
-
-        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 16).isActive = true
-        segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        segmentedControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
+        
+        segmentioView.translatesAutoresizingMaskIntoConstraints = false
+        segmentioView.topAnchor.constraint(equalTo: bottomSeparator.bottomAnchor, constant: 16).isActive = true
+        segmentioView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        segmentioView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+        segmentioView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
     }
     
     public func scrollViewDidScroll(scrollView: UIScrollView) {

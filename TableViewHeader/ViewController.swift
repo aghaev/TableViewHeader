@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let header = StretchyTableViewHeaderView(frame: CGRect(x: 0, y: 0,
                                                                width: view.frame.size.width,
-                                                               height: 550))
+                                                               height: 700))
 
         header.image = UIImage(named: "aydin")!
         header.name = "Aydin Aghayev"
@@ -50,17 +50,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         navigationController?.navigationBar.backgroundColor = .main
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
         
-        if #available(iOS 16.0, *) {
-            
-            let leftBarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "arrow.backward"), target: self, action: #selector(leftMenuItemSelected))
-                self.navigationItem.setLeftBarButton(leftBarItem, animated: false)
-            leftBarItem.tintColor = .primary
-            
-            let rightBarItem = UIBarButtonItem(title: nil, image: UIImage(systemName: "phone"), target: self, action: #selector(rightMenuItemSelected))
-            rightBarItem.tintColor = .primary
-            self.navigationItem.setRightBarButton(rightBarItem, animated: false)
-        } else {
-            
             let leftBtn = UIButton()
             leftBtn.setImage(UIImage(systemName: "phone"), for: .normal)
             leftBtn.addTarget(self, action: #selector(rightMenuItemSelected), for: .touchUpInside)
@@ -74,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let rightBarItem = UIBarButtonItem(customView: rightBtn)
             self.navigationItem.setRightBarButton(rightBarItem, animated: false)
             rightBtn.tintColor = .primary
-        }
+        
     }
     
     @objc func leftMenuItemSelected() {
