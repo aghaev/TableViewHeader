@@ -85,7 +85,7 @@
 		C9D2414B33810D0AE23D100AAE68A847 /* Segmentio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Segmentio.release.xcconfig; sourceTree = "<group>"; };
 		DDBC69D7042FC25109831DFA96EDE06B /* SegmentioCellWithLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentioCellWithLabel.swift; path = Segmentio/Source/Cells/SegmentioCellWithLabel.swift; sourceTree = "<group>"; };
 		E01058B2ACD9B203D20E18CF5BAEBD59 /* ResourceBundle-Segmentio-Segmentio-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-Segmentio-Segmentio-Info.plist"; sourceTree = "<group>"; };
-		E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Segmentio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Segmentio; path = Segmentio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC1C69C0A7883827549E1E3A10B945A9 /* Segmentio.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Segmentio.swift; path = Segmentio/Source/Segmentio.swift; sourceTree = "<group>"; };
 		F2AF1221E6A553678748959F1A3FEEA7 /* Segmentio-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Segmentio-umbrella.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				929C22FAA6CAE984A78801B803B8A418 /* Pods-TableViewHeader */,
-				E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */,
+				E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */,
 				C8F2C375082C9FA86026FA0A69016000 /* Segmentio.bundle */,
 			);
 			name = Products;
@@ -272,7 +272,7 @@
 			);
 			name = Segmentio;
 			productName = Segmentio;
-			productReference = E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio.framework */;
+			productReference = E17D1F60CD1816128BD7D11434B9EDC6 /* Segmentio */;
 			productType = "com.apple.product-type.framework";
 		};
 		5DDA1945A355CA8627C1177E395C7B1F /* Pods-TableViewHeader */ = {
@@ -567,7 +567,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Segmentio/Segmentio-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Segmentio/Segmentio-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +595,7 @@
 				DEVELOPMENT_TEAM = SKY5Q4QK25;
 				IBSC_MODULE = Segmentio;
 				INFOPLIST_FILE = "Target Support Files/Segmentio/ResourceBundle-Segmentio-Segmentio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Segmentio;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -657,7 +657,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Segmentio/Segmentio-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Segmentio/Segmentio-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,7 +721,7 @@
 				DEVELOPMENT_TEAM = SKY5Q4QK25;
 				IBSC_MODULE = Segmentio;
 				INFOPLIST_FILE = "Target Support Files/Segmentio/ResourceBundle-Segmentio-Segmentio-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = Segmentio;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

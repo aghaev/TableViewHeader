@@ -82,7 +82,7 @@ public struct SegmentioHorizontalSeparatorOptions {
     var color: UIColor
     
     public init(type: SegmentioHorizontalSeparatorType = .topAndBottom, height: CGFloat = 1.0,
-                color: UIColor = .red) {
+                color: UIColor = .darkGray) {
         self.type = type
         self.height = height
         self.color = color
@@ -203,8 +203,8 @@ public struct SegmentioOptions {
         self.segmentPosition = .fixed(maxVisibleItems: 4)
         self.scrollEnabled = true
         self.indicatorOptions = SegmentioIndicatorOptions()
-        self.horizontalSeparatorOptions = .none
-        self.verticalSeparatorOptions = .none
+        self.horizontalSeparatorOptions = SegmentioHorizontalSeparatorOptions()
+        self.verticalSeparatorOptions = SegmentioVerticalSeparatorOptions()
         self.imageContentMode = .center
         self.labelTextAlignment = .center
         self.labelTextNumberOfLines = 0

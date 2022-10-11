@@ -61,7 +61,7 @@ extension UIView {
         self.layer.mask = mask
     }
     
-    func createStack(with firstLabel: String, secondLabel: String, switchView: UISwitch?, isOn: Bool?) -> UIStackView {
+    func createStack(with firstLabel: String, secondLabel: String, switchView: UISwitch?, switchCases: Switchs?, isOn: Bool?) -> UIStackView {
         
         let firstLabel: UILabel = {
             let label = UILabel()
@@ -94,6 +94,16 @@ extension UIView {
             return verticalStackView
         } else {
             switchView?.isOn = isOn!
+            switch switchCases {
+            case .notification:
+                switchView?.tag = 1
+            case .silent:
+                switchView?.tag = 2
+            case .block:
+                switchView?.tag = 3
+            case .none:
+                break
+            }
             switchView?.addTarget(self, action: #selector(onSwitchValueChanged), for: .valueChanged)
             let horizontalStackView: UIStackView = {
                 let sv = UIStackView()
@@ -110,9 +120,9 @@ extension UIView {
     }
     
     @objc func onSwitchValueChanged(_ switchs: UISwitch) {
-        let qwe = [switchs.hashValue : switchs.isOn]
+        let data = [switchs.tag : switchs.isOn]
         let nc = NotificationCenter.default
-        nc.post(name: .switchValueChanged, object: qwe)
+        nc.post(name: .switchValueChanged, object: data)
     }
 
     

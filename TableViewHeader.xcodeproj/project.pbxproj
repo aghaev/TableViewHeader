@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9CD82F080C91869116BEC375 /* Pods_TableViewHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60B5A3F84357DE4783F882BB /* Pods_TableViewHeader.framework */; };
 		DB81E89728D08AB4002D70D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB81E89628D08AB4002D70D0 /* AppDelegate.swift */; };
 		DB81E89928D08AB4002D70D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB81E89828D08AB4002D70D0 /* SceneDelegate.swift */; };
 		DB81E89B28D08AB4002D70D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB81E89A28D08AB4002D70D0 /* ViewController.swift */; };
@@ -17,6 +16,10 @@
 		DB81E8AB28D09462002D70D0 /* StretchyTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */; };
 		DB9BAFE128D1048900C1BB37 /* CSegControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9BAFE028D1048900C1BB37 /* CSegControl.swift */; };
 		DB9BAFE328D105B500C1BB37 /* UIcolor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */; };
+		DBA47D2E28D8BD29003E05F8 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA47D2D28D8BD29003E05F8 /* TableViewHeader.swift */; };
+		DBA47D3028D8BDA8003E05F8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA47D2F28D8BDA8003E05F8 /* Model.swift */; };
+		E721CD9928F575F500059A00 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E721CD9828F575F500059A00 /* HeaderView.swift */; };
+		E721CD9A28F57A1300059A00 /* Pods_TableViewHeader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60B5A3F84357DE4783F882BB /* Pods_TableViewHeader.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchyTableViewHeaderView.swift; sourceTree = "<group>"; };
 		DB9BAFE028D1048900C1BB37 /* CSegControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSegControl.swift; sourceTree = "<group>"; };
 		DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor+Extension.swift"; sourceTree = "<group>"; };
+		DBA47D2D28D8BD29003E05F8 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
+		DBA47D2F28D8BDA8003E05F8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		E721CD9828F575F500059A00 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CD82F080C91869116BEC375 /* Pods_TableViewHeader.framework in Frameworks */,
+				E721CD9A28F57A1300059A00 /* Pods_TableViewHeader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +95,7 @@
 				DB81E89628D08AB4002D70D0 /* AppDelegate.swift */,
 				DB81E89828D08AB4002D70D0 /* SceneDelegate.swift */,
 				DB81E89A28D08AB4002D70D0 /* ViewController.swift */,
+				E721CD9828F575F500059A00 /* HeaderView.swift */,
 				DB81E89C28D08AB4002D70D0 /* Main.storyboard */,
 				DB81E89F28D08AB9002D70D0 /* Assets.xcassets */,
 				DB81E8A128D08AB9002D70D0 /* LaunchScreen.storyboard */,
@@ -96,6 +103,8 @@
 				DB81E8AA28D09462002D70D0 /* StretchyTableViewHeaderView.swift */,
 				DB9BAFE028D1048900C1BB37 /* CSegControl.swift */,
 				DB9BAFE228D105B500C1BB37 /* UIcolor+Extension.swift */,
+				DBA47D2D28D8BD29003E05F8 /* TableViewHeader.swift */,
+				DBA47D2F28D8BDA8003E05F8 /* Model.swift */,
 			);
 			path = TableViewHeader;
 			sourceTree = "<group>";
@@ -216,11 +225,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB81E89B28D08AB4002D70D0 /* ViewController.swift in Sources */,
+				E721CD9928F575F500059A00 /* HeaderView.swift in Sources */,
 				DB9BAFE328D105B500C1BB37 /* UIcolor+Extension.swift in Sources */,
 				DB81E89728D08AB4002D70D0 /* AppDelegate.swift in Sources */,
 				DB81E89928D08AB4002D70D0 /* SceneDelegate.swift in Sources */,
 				DB9BAFE128D1048900C1BB37 /* CSegControl.swift in Sources */,
 				DB81E8AB28D09462002D70D0 /* StretchyTableViewHeaderView.swift in Sources */,
+				DBA47D2E28D8BD29003E05F8 /* TableViewHeader.swift in Sources */,
+				DBA47D3028D8BDA8003E05F8 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -350,7 +362,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -376,11 +388,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aydin.www.TableViewHeader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -405,12 +419,14 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aydin.www.TableViewHeader;
+				"OTHER_CODE_SIGN_FLAGS[sdk=*]" = "--generate-entitlement-der";
+				PRODUCT_BUNDLE_IDENTIFIER = com.aydin.www.TableViewHeaderqwe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
